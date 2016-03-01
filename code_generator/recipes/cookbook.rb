@@ -50,20 +50,11 @@ template "#{cookbook_dir}/.kitchen.yml" do
   action :create_if_missing
 end
 
-directory "#{cookbook_dir}/test/integration/default/serverspec" do
+directory "#{cookbook_dir}/test/integration/default/inspec" do
   recursive true
 end
 
-directory "#{cookbook_dir}/test/integration/helpers/serverspec" do
-  recursive true
-end
-
-cookbook_file "#{cookbook_dir}/test/integration/helpers/serverspec/spec_helper.rb" do
-  source 'serverspec_spec_helper.rb'
-  action :create_if_missing
-end
-
-template "#{cookbook_dir}/test/integration/default/serverspec/default_spec.rb" do
+template "#{cookbook_dir}/test/integration/default/inspec/default_spec.rb" do
   source 'serverspec_default_spec.rb.erb'
   helpers(ChefDK::Generator::TemplateHelper)
   action :create_if_missing
