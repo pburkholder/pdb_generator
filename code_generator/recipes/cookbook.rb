@@ -50,6 +50,11 @@ template "#{cookbook_dir}/.kitchen.yml" do
   action :create_if_missing
 end
 
+template "#{cookbook_dir}/.kitchen.dokken.yml" do
+  source 'kitchen.dokken.yml.erb'
+  helpers(ChefDK::Generator::TemplateHelper)
+end
+
 directory "#{cookbook_dir}/test/integration/default/inspec" do
   recursive true
 end
